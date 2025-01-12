@@ -8,10 +8,10 @@ app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 CORS(app)
 
-db_user = 'root'
-db_password = 'hoangduc1123'
-db_host = '13.250.106.255'
-db_name = 'kafi'
+db_user = ###
+db_password = ###
+db_host = ###
+db_name = ###
 engine = create_engine(f'mysql+pymysql://{db_user}:{db_password}@{db_host}/{db_name}')
 
 ALLOWED_EXTENSIONS = {'csv'}
