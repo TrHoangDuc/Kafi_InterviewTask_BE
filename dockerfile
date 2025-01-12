@@ -22,4 +22,4 @@ COPY . .
 EXPOSE 5000
 
 # Set the entry point for the container
-CMD ["python", "importCSV.py"]
+CMD ["python", "main.py"]
