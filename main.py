@@ -10,7 +10,7 @@ CORS(app)
 
 db_user = 'root'
 db_password = 'hoangduc1123'
-db_host = '13.250.106.255'
+db_host = 'localhost'
 db_name = 'kafi'
 engine = create_engine(f'mysql+pymysql://{db_user}:{db_password}@{db_host}/{db_name}')
 
