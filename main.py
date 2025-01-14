@@ -1,14 +1,18 @@
 # Import necessary dependencies
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from sqlalchemy import create_engine, Table, MetaData, text
+from sqlalchemy import create_engine, text
 import pandas as pd
 import os
 
+# Initialize a Flask python project
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
+# Config CORS to allows requests from the Internet
 CORS(app, resources={r"/*": {"origins": "*"}})
 
+# This is the configuration for connection to MySQL database using sqlalchemy
 db_user = 'root' # The username to login to Database
 db_password = '' # The password of user
 db_host = '' # The IP address of the server containing the Database
