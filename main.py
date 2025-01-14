@@ -1,3 +1,4 @@
+# Import necessary dependencies
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from sqlalchemy import create_engine, Table, MetaData, text
@@ -6,24 +7,23 @@ import os
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
-db_user = 'root'
-db_password = 'hoangduc1123'
-db_host = 'localhost'
-db_name = 'kafi'
+db_user = 'root' # The username to login to Database
+db_password = '' # The password of user
+db_host = '' # The IP address of the server containing the Database
+db_name = '' # The table name for this app to connect
 engine = create_engine(f'mysql+pymysql://{db_user}:{db_password}@{db_host}/{db_name}')
 
+# Function to check an input is a CSV file
 ALLOWED_EXTENSIONS = {'csv'}
-
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-
+# Function to accept an input an return data if successfully, return an error if failed
 @app.route('/upload', methods=['POST'])
 def upload_csv():
     file = request.files['file']
-
     if not file:
         return jsonify({'error': 'No file uploaded'}), 400
     if not allowed_file(file.filename):
